@@ -1,20 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><users>
-    <user>
-        <username>johndoe</username>
-        <email>johndoe@example.com</email>
-        <phone>+49-123-4567890</phone>
-        <age>30</age>
-    </user>
-    <user>
-        <username>janedoe</username>
-        <email>janedoe@example.com</email>
-        <phone>+49-987-6543210</phone>
-        <age>25</age>
-    </user>
-    <user>
-        <username>maxmustermann</username>
-        <email>max.mustermann@example.com</email>
-        <phone>+49-555-1234567</phone>
-        <age>35</age>
-    </user>
-</users>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Books>
+    <Book id="1" year="2020">
+        <Author name="Sam"/>
+        <Author name="Bob"/>
+        A fairy tale.
+    </Book>
+    <Book id="2">
+        <Author name="Alice"/>
+        Fiction.
+    </Book>
+    <Book id="3" year="2023">
+        History of fairy kingdom.
+    </Book>
+</Books>

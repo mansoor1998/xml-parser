@@ -37,6 +37,7 @@ def get_parsing_args():
 
 def query_data(xml, query: str):
     query_result = xml.xpath(query)
+    print(len(query_result))
     if(len(query_result) == 0):
         print()
         print("No Result")
@@ -55,7 +56,6 @@ def query_data(xml, query: str):
 
 
 def main():
-
     input, output, query = get_parsing_args()
 
     xml_tree = read_parse_file(input)

@@ -6,9 +6,9 @@ services:
       context: ./java
       dockerfile: Dockerfile
     volumes:
-      - ./input.xml:/app/input.xml
+      - ./error.xml:/app/error.xml
       - ./result:/app/result
-    command: ["input.xml", "./result/output-java.xml"]
+    command: ["--input", "error.xml", "--output", "./result/output-java.xml", "-q", "//*[@id*(-1)<2]"]
     restart: "no"
   python-parser:
     image: python-parser:latest
@@ -16,17 +16,21 @@ services:
       context: ./python
       dockerfile: Dockerfile
     volumes:
-      - ./input.xml:/app/input.xml
+      - ./error.xml:/app/error.xml
       - ./result:/app/result
-    command: ["--input", "input.xml", "--output",  ./result/output-python.xml"]
+    command: ["--input", "error.xml", "--output", "./result/output-python.xml", "-q", "//*[@id*(-1)<2]"]
     restart: "no"
+    depends_on:
+      - java-parser
   javascript-parser:
     image: javascript-parser:latest
     build:
       context: ./javascript
       dockerfile: Dockerfile
     volumes:
-      - ./input.xml:/app/input.xml
+      - ./error.xml:/app/error.xml
       - ./result:/app/result
-    command: ["input.xml", "./result/output-javascript.xml"]
+    command: ["--input", "error.xml", "--output", "./result/output-javascript.xml", "-q", "//*[@id*(-1)<2]"]
     restart: "no"
+    depends_on:
+      - python-parser

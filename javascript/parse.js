@@ -74,6 +74,8 @@ const query_data = (xmlData, query) => {
         console.log('EMPTY RESULT');
     }
 
+    console.log(nodes.length)
+
     console.log("-----------------------Query Results---------------------------------");
 
     nodes.forEach(node => {

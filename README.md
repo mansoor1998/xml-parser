@@ -20,3 +20,9 @@ following code snippits are required to execute them
 - ```docker run -v %cd%/input.xml:/app/input.xml -v %cd%/result:/app/result --rm python-parser input.xml ./result/output-python.xml```
 
 - ```docker run -v %cd%/input.xml:/app/input.xml -v %cd%/result:/app/result --rm python-parser --input input.xml --output ./result/output-python.xml --query //user/username ```
+
+
+
+
+What parameters will be provided in this case
+--input ../error.xml --output output.xml -q "//*[@id*(-1)<2]"

@@ -1,11 +1,11 @@
 <Books>
     <Book id="1" year="2020">
-        <Author name="Sam" />
-        <Author name="Bob" />
+        <Author name="Sam"/>
+        <Author name="Bob"/>
         A fairy tale.
     </Book>
     <Book id="2">
-        <Author name="Alice" />
+        <Author name="Alice"/>
         Fiction.
     </Book>
     <Book id="3" year="2023">
