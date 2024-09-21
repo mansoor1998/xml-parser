@@ -1,0 +1,32 @@
+version: '3'
+services:
+  java-parser:
+    image: java-parser:latest
+    build:
+      context: ./java
+      dockerfile: Dockerfile
+    volumes:
+      - ./input.xml:/app/input.xml
+      - ./result:/app/result
+    command: ["input.xml", "./result/output-java.xml"]
+    restart: "no"
+  python-parser:
+    image: python-parser:latest
+    build:
+      context: ./python
+      dockerfile: Dockerfile
+    volumes:
+      - ./input.xml:/app/input.xml
+      - ./result:/app/result
+    command: ["input.xml", "./result/output-python.xml"]
+    restart: "no"
+  javascript-parser:
+    image: javascript-parser:latest
+    build:
+      context: ./javascript
+      dockerfile: Dockerfile
+    volumes:
+      - ./input.xml:/app/input.xml
+      - ./result:/app/result
+    command: ["input.xml", "./result/output-javascript.xml"]
+    restart: "no"
