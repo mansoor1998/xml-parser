@@ -5,10 +5,13 @@
   "main": "parse.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "example": "node parse.js input.xml output.xml"
+    "example": "node parse.js --input input.xml --output output.xml -q //user/username"
   },
   "dependencies": {
-    "xml2js": "^0.6.2"
+    "xml2js": "^0.6.2",
+    "xmldom": "^0.6.0",
+    "xpath": "^0.0.34",
+    "yargs": "^17.7.2"
   },
   "author": "",
   "license": "ISC"

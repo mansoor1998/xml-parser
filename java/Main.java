@@ -48,22 +48,60 @@ public class Main {
         
     }
 
-    public static void main(String[] args) {
-        if(args.length != 2) {
-            System.out.println("require 2 arguments, input file path and output file path");
+    public static void queryData(Document doc, String q) throws Exception {
+        
+        if(q == null){
             return;
         }
 
-        System.out.println("fetching give arguments.");
+        NodeList nodeList = (NodeList) javax.xml.xpath.XPathFactory.newInstance().newXPath().evaluate(q, doc, javax.xml.xpath.XPathConstants.NODESET);
 
-        String inputPath = args[0];
-        String outputPath = args[1];
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node node = nodeList.item(i);
+            
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(node);
+            StreamResult result = new StreamResult(System.out);
+            System.out.println();
+            
+            transformer.transform(source, result);
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        
+        String inputPath = null;
+        String outputPath = null;
+        String query = null;
+
+        for (int i = 0; i < args.length; i++) {
+            switch (args[i]) {
+                case "--input":
+                    inputPath = args[++i];
+                    break;
+                case "--output":
+                    outputPath = args[++i];
+                    break;
+                case "-q":
+                    query = args[++i];
+                    break;
+            }
+        }
+
+        if(inputPath == null || outputPath == null) {
+            throw new Exception(" input or output paths are not provided ");
+        }
 
         System.out.println("Parsing and writing File..");
 
         Document document = readParseFile(inputPath);
+
+        queryData(document, query);
+
         writeFile(document, outputPath);
 
+        System.out.println();
         System.out.println("done");
     }
 }
