@@ -14,7 +14,7 @@ def read_parse_file(file_path):
             return etree.fromstring(file.read()) 
 
 def write_file(path, xml_tree):
-    with open(path, 'w') as file:
+    with open(path, 'w', encoding='utf-8') as file:
         file.write(ET.tostring(xml_tree, encoding='unicode'))  
 
 def get_parsing_args():
@@ -45,12 +45,12 @@ def query_data(xml, query: str):
         return
 
     print("-----------------------XPath Result------------------------")
-    for q in query_result:
-        if isinstance(q, str):
-            print(q)
+    for index in range(len(query_result)):
+        if isinstance(query_result[index], str):
+            print( f"Element-{index}='{query_result[index]}'\n")
         else:
             print(
-                etree.tostring(q, encoding='unicode')
+                f"Element-{index}='{etree.tostring(query_result[index], encoding='unicode')}'\n"
             )
     print("-----------------------------------------------------------")
 

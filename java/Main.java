@@ -63,9 +63,15 @@ public class Main {
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(node);
             StreamResult result = new StreamResult(System.out);
-            System.out.println();
-            
+
+            System.out.println(
+                String.format("Element-%d='", i)
+            );
             transformer.transform(source, result);
+            System.out.println(
+                "'\n"
+            );
+            
         }
     }
 
@@ -102,6 +108,5 @@ public class Main {
         writeFile(document, outputPath);
 
         System.out.println();
-        System.out.println("done");
     }
 }
