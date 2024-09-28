@@ -2,7 +2,9 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using CommandLine;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace csharp;
 
@@ -46,17 +48,42 @@ class Program
 
     static void QueryData(XDocument xmlTree, string query)
     {
-        var queryResult = xmlTree.XPathSelectElements(query);
-
-        if (!queryResult.Any())
+        var result = xmlTree.XPathEvaluate(query);
+        
+        List<string> queryResults = new List<string>();
+        
+        if (result is IEnumerable<object> enumerable)
+        {
+            foreach (var item in enumerable)
+            {
+                if (item is XText text)
+                {
+                    queryResults.Add(text.ToString());
+                }
+                else if (item is XAttribute attribute)
+                {
+                    queryResults.Add(attribute.ToString());
+                }
+                else if (item is XElement element)
+                {
+                    queryResults.Add(element.ToString());
+                }
+            }
+        }
+        else if (result is string singleResult)
+        {
+            queryResults.Add(singleResult);
+        }
+        
+        if (!queryResults.Any())
         {
             Console.WriteLine("\nNo Result\n");
             return;
         }
-
+        
         Console.WriteLine("-----------------------XPath Result------------------------");
         int index = 0;
-        foreach (var element in queryResult)
+        foreach (var element in queryResults)
         {
             Console.WriteLine($"Element-{index}='{element}'\n");
             index++;

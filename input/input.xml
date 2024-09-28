@@ -1,14 +1,14 @@
 <Books>
-① <Book id="1" year="2020">
+<Book id="1" year="2020">
 <Author name="Sam"/>
 <Author name="Bob"/>
 A fairy tale.
 </Book>
-② <Book id="2">
+<Book id="2">
 <Author name="Alice"/>
 Fiction.
 </Book>
-③ <Book id="3" year="2023">
+<Book id="3" year="2023">
 History of fairy kingdom.
 </Book>
 </Books>

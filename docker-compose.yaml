@@ -22,7 +22,7 @@ services:
     depends_on:
       - java-parser
   chsarp-parser:
-    image: chsarp-parser:latest
+    image: csharp-parser:latest
     build:
       context: ./csharp
       dockerfile: Dockerfile
