@@ -1,7 +1,7 @@
+using System;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using CommandLine;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

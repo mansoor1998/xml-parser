@@ -1,10 +1,6 @@
-# take the file and check if it exist
-# parse the file
-# post the file in output
 
 import xml.etree.ElementTree as ET
 from lxml import etree
-from lxml.etree import Element
 import sys
 import argparse
 
